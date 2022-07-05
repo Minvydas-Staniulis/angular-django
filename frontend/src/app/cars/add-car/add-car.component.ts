@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class AddCarComponent implements OnInit {
 
   addCarForm: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder, private carService: CarService) { }
+  constructor(private formBuilder: FormBuilder, private carService: CarService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.addCarForm = this.formBuilder.group({
@@ -22,9 +23,9 @@ export class AddCarComponent implements OnInit {
 
   createCar(){
     this.carService.addCar(this.addCarForm.value).subscribe(data => {
-      console.log("Record created");
+      this._snackBar.open("Record Created Successfuly");
     }, err => {
-      console.log(err);
+      this._snackBar.open("Failed, check console for more info");
     });
   }
 }
