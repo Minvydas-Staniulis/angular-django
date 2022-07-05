@@ -1,0 +1,11 @@
+<mat-list role="list">
+        <mat-card class="card-details" role="listitem" *ngFor="let car of allCars">
+            <mat-card-title>{{car.car_plate}}</mat-card-title>
+            <mat-card-content>
+                {{car.owner_name}}
+            </mat-card-content>
+            <mat-card-actions>
+                <a [routerLink]="['/cars/edit', car.id]"><mat-icon>edit</mat-icon></a> <a [routerLink]="['/cars/delete', car.id]"><mat-icon>delete</mat-icon></a>
+            </mat-card-actions>
+        </mat-card>
+  </mat-list>

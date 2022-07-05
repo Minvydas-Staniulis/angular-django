@@ -1,0 +1,23 @@
+<mat-card>
+    <mat-card-title>Create record</mat-card-title>
+<form [formGroup]="addCarForm" (submit)="createCar()" class="example-form">
+    <p>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Car Plate</mat-label>
+            <input matInput placeholder="Ex. XXX000" formControlName="car_plate">
+          </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Owner Name</mat-label>
+            <input matInput placeholder="Ex. Name" formControlName="owner_name">
+          </mat-form-field>
+    </p>
+    <p>
+        <button mat-stroked-button color="primary">Submit</button>
+        <button mat-stroked-button color="primary">Cancel</button>
+    </p>
+    
+</form>
+</mat-card>
+
