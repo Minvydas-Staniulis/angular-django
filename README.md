@@ -11,6 +11,7 @@ python manage.py migrate playground
 ```
 
 # To run the backend:
+> VirtualEnv has to be created
 ```
 cd backend
 python manage.py runserver
