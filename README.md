@@ -1,8 +1,7 @@
 # MySQL Workbench
 >Edit backend/backend settings.py DATABASES variable to your own MySQL DB
->Command to create database:
 ```
-create database plates
+create database plates #command to create database on MySQL Workbench
 ```
 
 # Create MySQL table: 
