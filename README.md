@@ -1,6 +1,6 @@
 # MySQL Workbench
 >Edit backend/backend settings.py DATABASES variable to your own MySQL DB
-Command to create database:
+>Command to create database:
 ```
 create database plates
 ```
