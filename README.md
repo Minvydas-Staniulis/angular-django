@@ -1,5 +1,6 @@
-MySQL Workbench is used to store the data
+# MySQL Workbench
 >Edit backend/backend settings.py DATABASES variable to your own MySQL DB
+Command to create database:
 ```
 create database plates
 ```
