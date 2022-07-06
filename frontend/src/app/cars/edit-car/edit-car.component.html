@@ -1,1 +1,23 @@
-<p>edit-car works!</p>
+<div *ngIf="dataLoaded">
+
+<mat-card>
+    <mat-card-title>Update record</mat-card-title>
+<form [formGroup]="editCarForm" (submit)="updateCar()" class="example-form">
+    <p>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Car Plate</mat-label>
+            <input matInput placeholder="Ex. XXX000" formControlName="car_plate">
+          </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Owner Name</mat-label>
+            <input matInput placeholder="Ex. Name" formControlName="owner_name">
+          </mat-form-field>
+    </p>
+    <p>
+        <button mat-stroked-button color="primary">Submit</button>
+    </p>  
+</form>
+</mat-card>
+</div>
