@@ -1,6 +1,10 @@
 .example-spacer {
-    flex: 1 1 auto;
+    flex: 0.1 1 auto;
   }
+
+.create-class:visited {
+    color: inherit;
+}
 
 .example-form {
     padding-left: 15px;

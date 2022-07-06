@@ -12,4 +12,12 @@ export class CarService {
   allCars(){
     return this.http.get(this.baseUrl);
   }
+
+  addCar(carObj: any){
+    return this.http.post(this.baseUrl, carObj);
+  }
+
+  deleteCar(id: any){
+    return this.http.delete(this.baseUrl + "/" + id)
+  }
 }
