@@ -1,14 +1,27 @@
-<mat-list role="list">
-        <mat-card class="card-details" role="listitem" *ngFor="let car of allCars">
-            <mat-card-title>{{car.car_plate}}</mat-card-title>
-            <mat-card-content>
-                {{car.owner_name}}
-            </mat-card-content>
-            <mat-card-actions>
-                <a [routerLink]="['/cars/edit', car.id]"><mat-icon>edit</mat-icon></a> <a [routerLink]="['/cars/delete', car.id]"><mat-icon>delete</mat-icon></a>
-            </mat-card-actions>
-        </mat-card>
-</mat-list>
-<mat-paginator #paginator [length]="dataSize" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+<table mat-table [dataSource]="allCars" class="mat-elevation-z8 demo-table">
+
+    <ng-container matColumnDef="carplate">
+      <th mat-header-cell *matHeaderCellDef> Car Plate </th>
+      <td mat-cell *matCellDef="let element"> {{element.car_plate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ownername">
+        <th mat-header-cell *matHeaderCellDef> Owner Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.owner_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element"> <a [routerLink]="['/cars/edit', element.id]"><mat-icon>edit</mat-icon></a> <a [routerLink]="['/cars/delete', element.id]"><mat-icon>delete</mat-icon></a> </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+  </table>
+
+
+
+<mat-paginator #paginator [length]="dataSize" [pageSize]="5" 
+[pageSizeOptions]="[5, 10, 25, 100]">
 </mat-paginator>
 

@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild, ɵsetAllowDuplicateNgModuleIdsForTest } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { AfterViewInit, Component, OnInit, ViewChild, ɵsetAllowDuplicateNgModuleIdsForTest } from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
-import { merge, of } from 'rxjs';
+import { merge, of, tap} from 'rxjs';
 import { startWith, switchMap } from 'rxjs/operators';
-import { CarService } from 'src/app/services/car.service';
+import { cars, CarService } from 'src/app/services/car.service';
 
 @Component({
   selector: 'app-view-all',
@@ -12,35 +12,30 @@ import { CarService } from 'src/app/services/car.service';
 })
 
 export class ViewAllComponent implements OnInit {
-  allCars: any;
-
-  title = 'paginator';
+  allCars: cars[] = [];
+  columnsToDisplay = ['carplate', 'ownername', 'actions'];
+  dataSource!: any;
   dataSize: number = 0;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  constructor(private carService: CarService) { }
+  @ViewChild(MatPaginator) paginator: MatPaginator // good
+
+  constructor(private carService: CarService) { 
+    this.carService.allCars().subscribe(data => {
+      this.allCars = data;
+      console.log(this.allCars);
+      this.allCars.sort((a: { car_plate: string; }, b: { car_plate: any; }) => a.car_plate.localeCompare(b.car_plate));
+    })
+  }
 
   ngOnInit(): void {
+    //this.loadPage();
+  }
+
+  loadPage() {
     this.carService.allCars().subscribe(data => {
-        this.allCars = data;
-        this.allCars.sort((a: { car_plate: string; }, b: { car_plate: any; }) => a.car_plate.localeCompare(b.car_plate));
-        this.dataSize = this.allCars.length;
-        this.linkListToPaginator();
+      this.allCars = data;
+      this.allCars.sort((a: { car_plate: string; }, b: { car_plate: any; }) => a.car_plate.localeCompare(b.car_plate));
+      this.dataSize = this.allCars.length;
     });
   }
-
-  linkListToPaginator() {
-    merge(this.paginator.page).pipe(
-      startWith({}),
-      switchMap(() => {
-        return of(this.allCars);
-      })
-    ).subscribe(res => {
-      const from = this.paginator.pageIndex * 10;
-      const to = from + 10;
-      
-      this.allCars = res.slice(from, to);
-    });
-  }
-
 }
