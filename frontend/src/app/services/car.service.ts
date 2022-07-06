@@ -16,4 +16,8 @@ export class CarService {
   addCar(carObj: any){
     return this.http.post(this.baseUrl, carObj);
   }
+
+  deleteCar(id: any){
+    return this.http.delete(this.baseUrl + "/" + id)
+  }
 }
