@@ -6,7 +6,7 @@ import { CarService } from 'src/app/services/car.service';
 @Component({
   selector: 'app-delete-car',
   templateUrl: './delete-car.component.html',
-  styleUrls: ['./delete-car.component.css']
+  styleUrls: ['./delete-car.component.scss']
 })
 export class DeleteCarComponent implements OnInit {
 

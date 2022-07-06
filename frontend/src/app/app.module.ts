@@ -8,8 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import { LayoutModule } from './layout/layout.module';
-import { CarsModule } from './cars/cars.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ViewAllComponent } from './cars/view-all/view-all.component';
+import { CarsModule } from './cars/cars.module';
 
 
 @NgModule({
@@ -26,7 +27,9 @@ import { HttpClientModule } from '@angular/common/http';
     LayoutModule,
     CarsModule
   ],
-  providers: [],
+  providers: [
+    ViewAllComponent,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ViewAllComponent } from './view-all/view-all.component';
-import { ViewCarComponent } from './view-car/view-car.component';
 import { AddCarComponent } from './add-car/add-car.component';
 import { EditCarComponent } from './edit-car/edit-car.component';
 import { DeleteCarComponent } from './delete-car/delete-car.component';
@@ -25,7 +24,6 @@ import { MatTableDataSource } from '@angular/material/table';
 @NgModule({
   declarations: [
     ViewAllComponent,
-    ViewCarComponent,
     AddCarComponent,
     EditCarComponent,
     DeleteCarComponent,

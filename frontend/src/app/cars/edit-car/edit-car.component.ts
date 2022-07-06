@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarService } from 'src/app/services/car.service';
@@ -7,12 +7,12 @@ import { CarService } from 'src/app/services/car.service';
 @Component({
   selector: 'app-edit-car',
   templateUrl: './edit-car.component.html',
-  styleUrls: ['./edit-car.component.css']
+  styleUrls: ['./edit-car.component.scss']
 })
 export class EditCarComponent implements OnInit {
 
   carId: string = '';
-  editCarForm: FormGroup = new FormGroup({});
+  editCarForm:FormGroup;
   carDetails: any;
   dataLoaded: boolean = false;
 
@@ -21,35 +21,30 @@ export class EditCarComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+  
+
     this.dataLoaded = false;
     this.activatedRoute.params.subscribe(data => {
       this.carId = data['id'];
     });
-    if(this.carId !== ''){
-      this.carService.viewCar(this.carId).toPromise().then(data => {
+    if(this.carId.length){
+      this.carService.viewCar(this.carId).subscribe(data => {
         this.carDetails = data;
-        
         this.editCarForm = this.formBuilder.group({
-          'ID': new FormControl(this.carId),
           'car_plate': new FormControl(this.carDetails['car_plate']),
           'owner_name': new FormControl(this.carDetails['owner_name']),
         });
-
-        this.dataLoaded = true;
+          this.dataLoaded = true;
       })
-      .catch(err => {
-        console.log(err);
-      })
-       
     }
   }
 
   updateCar(){
-    this.carService.updateCar(this.editCarForm.value).subscribe(data => {
+    this.carService.updateCar({ID:this.carId,...this.editCarForm.value}).subscribe(() => {
       this._snackBar.open("Record Created Successfuly");
       this.router.navigate(['cars/all']);
-    }, err => {
-      this._snackBar.open("Failed, car plate already exists or is in invalid format");
-    });
-  }
+    }, () => 
+      this._snackBar.open("Failed, car plate already exists or is in invalid format")
+    );
+    }
   }
