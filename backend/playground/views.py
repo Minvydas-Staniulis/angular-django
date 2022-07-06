@@ -17,6 +17,7 @@ def carApi(request, id=0):
         return JsonResponse(car_serializer.data, safe=False)
     elif request.method == 'POST':
         car_data = JSONParser().parse(request)
+        car_data['car_plate'] = car_data['car_plate'].upper()
         car_serializer = CarSerializer(data=car_data)
         if car_serializer.is_valid():
             car_serializer.save()
