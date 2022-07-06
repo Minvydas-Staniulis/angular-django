@@ -18,6 +18,14 @@ export class CarService {
   }
 
   deleteCar(id: any){
-    return this.http.delete(this.baseUrl + "/" + id)
+    return this.http.delete(this.baseUrl + "/" + id);
+  }
+
+  viewCar(id: string) {
+    return this.http.get(this.baseUrl + "/" + id);
+  }
+
+  updateCar(carObj: any) {
+    return this.http.put(this.baseUrl, carObj);
   }
 }

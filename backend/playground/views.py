@@ -12,12 +12,17 @@ from playground.serializers import CarSerializer
 @csrf_exempt
 def carApi(request, id=0):
     if request.method == 'GET':
-        car = Car.objects.all()
-        car_serializer = CarSerializer(car, many=True)
+        if id != 0:
+            car = Car.objects.get(id=id)
+            car_serializer = CarSerializer(car)
+        else:
+            cars = Car.objects.all()
+            car_serializer = CarSerializer(cars, many=True)
         return JsonResponse(car_serializer.data, safe=False)
     elif request.method == 'POST':
         car_data = JSONParser().parse(request)
         car_data['car_plate'] = car_data['car_plate'].upper()
+        car_data['owner_name'] = car_data['owner_name'].capitalize()
         car_serializer = CarSerializer(data=car_data)
         if car_serializer.is_valid():
             car_serializer.save()

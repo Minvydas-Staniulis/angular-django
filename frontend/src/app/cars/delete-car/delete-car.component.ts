@@ -18,6 +18,7 @@ export class DeleteCarComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(data => {
       this.carId = data['id'];
+      
     });
 
     if(this.carId){
