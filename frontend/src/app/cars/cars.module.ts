@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ViewAllComponent } from './view-all/view-all.component';
-import { ViewCarComponent } from './view-car/view-car.component';
 import { AddCarComponent } from './add-car/add-car.component';
 import { EditCarComponent } from './edit-car/edit-car.component';
 import { DeleteCarComponent } from './delete-car/delete-car.component';
@@ -17,7 +16,7 @@ import {MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS} from '@angular/materia
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
-import { MatTableDataSource } from '@angular/material/table';
+//import { MatTableDataSource } from '@angular/material/table';
 
 
 
@@ -25,7 +24,6 @@ import { MatTableDataSource } from '@angular/material/table';
 @NgModule({
   declarations: [
     ViewAllComponent,
-    ViewCarComponent,
     AddCarComponent,
     EditCarComponent,
     DeleteCarComponent,
@@ -44,6 +42,8 @@ import { MatTableDataSource } from '@angular/material/table';
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
+    //MatTableDataSource,
+
   ],
   providers: [
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}

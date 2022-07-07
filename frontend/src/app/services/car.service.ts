@@ -1,12 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-export interface cars {
-  id: number,
-  car_plate: string,
-  owner_name: string
-}
+import { Car } from '../types';
 
 @Injectable({
   providedIn: 'root'
@@ -16,15 +11,15 @@ export class CarService {
   baseUrl: string = 'http://127.0.0.1:8000/car'
   constructor(private http: HttpClient) { }
 
-  allCars(): Observable<cars[]>{
-    return this.http.get<cars[]>(this.baseUrl);
+  allCars(): Observable<Car[]>{
+    return this.http.get<Car[]>(this.baseUrl);
+  }
+// CREATE TYPES
+  addCar(carObj: Car){
+    return this.http.post(this.baseUrl, carObj); 
   }
 
-  addCar(carObj: any){
-    return this.http.post(this.baseUrl, carObj);
-  }
-
-  deleteCar(id: any){
+  deleteCar(id: string){
     return this.http.delete(this.baseUrl + "/" + id);
   }
 
@@ -32,7 +27,7 @@ export class CarService {
     return this.http.get(this.baseUrl + "/" + id);
   }
 
-  updateCar(carObj: any) {
+  updateCar(carObj: Car) {
     return this.http.put(this.baseUrl, carObj);
   }
 }

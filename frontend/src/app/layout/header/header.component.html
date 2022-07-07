@@ -1,12 +1,6 @@
 <p>
     <mat-toolbar color="primary">
-      <mat-icon> directions_car</mat-icon>
-      <form class="example-form">
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Search</mat-label>
-          <input matInput placeholder="Ex. XXX000">
-        </mat-form-field>
-      </form>
+      <a class="view-all" href="cars/all"><mat-icon> directions_car</mat-icon></a>
       <span class="example-spacer"></span>
         <a class="create-class" [routerLink]="['cars/create']"><mat-icon>note_add</mat-icon></a>
     </mat-toolbar>
