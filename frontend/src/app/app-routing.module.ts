@@ -6,7 +6,7 @@ import { EditCarComponent } from './cars/edit-car/edit-car.component';
 import { ViewAllComponent } from './cars/view-all/view-all.component';
 
 const routes: Routes = [
-
+  { path: '', redirectTo: '/cars/all', pathMatch: 'full'},
   { path: 'cars', 
     children: [
       { path: '', component: ViewAllComponent},
