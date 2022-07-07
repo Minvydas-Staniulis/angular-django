@@ -13,8 +13,4 @@ export class HeaderComponent implements OnInit {
     
   }
 
-  applySearchFilter(event: Event) {
-    this.viewAllComponent.applySearchFilter(event);
-  }
-
 }

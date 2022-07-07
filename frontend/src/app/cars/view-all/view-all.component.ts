@@ -24,15 +24,8 @@ export class ViewAllComponent implements OnDestroy,OnInit{
  
   constructor(private carService: CarService) { }
 
-  applySearchFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    if(this.dataSource?.filter){
-      this.dataSource.filter = filterValue.trim().toUpperCase();
-    }
-    
-    if(this.dataSource?.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+  filterData($event: any) {
+    this.dataSource.filter = $event.target.value;
   }
 
   ngOnInit(){
