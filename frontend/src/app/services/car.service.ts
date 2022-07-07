@@ -27,7 +27,7 @@ export class CarService {
     return this.http.get(this.baseUrl + "/" + id);
   }
 
-  updateCar(carObj: any) {
+  updateCar(carObj: Car) {
     return this.http.put(this.baseUrl, carObj);
   }
 }
