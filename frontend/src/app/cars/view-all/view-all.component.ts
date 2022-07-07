@@ -22,11 +22,9 @@ export class ViewAllComponent implements OnDestroy,OnInit{
   columnsToDisplay = ['carplate', 'ownername', 'actions'];
   dataSource: MatTableDataSource<Car>;
  
-  constructor(private carService: CarService) { }
+  isShow = true;
 
-  filterData($event: any) {
-    this.dataSource.filter = $event.target.value;
-  }
+  constructor(private carService: CarService) { }
 
   ngOnInit(){
     this.subs.add(
@@ -39,6 +37,13 @@ export class ViewAllComponent implements OnDestroy,OnInit{
       )
   }
 
+  filterData($event: any) {
+    this.dataSource.filter = $event.target.value;
+  }
+
+  displayConfirm() {
+    this.isShow = !this.isShow;
+  }
   ngOnDestroy(): void {
     this.subs.unsubscribe();
    }

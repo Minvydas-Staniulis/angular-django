@@ -17,17 +17,14 @@
 
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Actions </th>
-        <td mat-cell *matCellDef="let element"> <a [routerLink]="['/cars/edit', element.id]"><mat-icon>edit</mat-icon></a> <a [routerLink]="['/cars/delete', element.id]"><mat-icon>delete</mat-icon></a> </td>
+        <td mat-cell *matCellDef="let element"> 
+            <button [routerLink]="['/cars/edit', element.id]"><mat-icon>edit</mat-icon></button> 
+            <button [routerLink]="['/cars/delete', element.id]"><mat-icon>delete</mat-icon></button> 
+        </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
-
-    <tr>
-        <td class="mat-cell" colspan="4">
-            The filter does not match any item
-        </td>
-    </tr>
   </table>
 
 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]">

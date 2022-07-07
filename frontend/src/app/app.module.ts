@@ -11,6 +11,7 @@ import { LayoutModule } from './layout/layout.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ViewAllComponent } from './cars/view-all/view-all.component';
 import { CarsModule } from './cars/cars.module';
+import { DeleteCarComponent } from './cars/delete-car/delete-car.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { CarsModule } from './cars/cars.module';
   ],
   providers: [
     ViewAllComponent,
+    DeleteCarComponent,
   ],
   bootstrap: [AppComponent]
 })

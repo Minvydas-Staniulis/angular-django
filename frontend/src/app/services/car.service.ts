@@ -16,7 +16,7 @@ export class CarService {
   }
 // CREATE TYPES
   addCar(carObj: Car){
-    return this.http.post(this.baseUrl, carObj);
+    return this.http.post(this.baseUrl, carObj); 
   }
 
   deleteCar(id: string){
