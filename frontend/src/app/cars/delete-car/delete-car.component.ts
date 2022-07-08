@@ -15,9 +15,14 @@ export class DeleteCarComponent {
     if(id){
       this.carService.deleteCar(id).subscribe(() => {
         this._snackBar.open("Record deleted successfuly");
+        this.refresh();
       }, () => {
         this._snackBar.open("Oops, something went wrong :(");
       });
     }
   }
+
+  refresh(): void {
+    window.location.reload();
+}
 }
