@@ -9,8 +9,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import { LayoutModule } from './layout/layout.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ViewAllComponent } from './cars/view-all/view-all.component';
+import { CarListComponent } from './cars/car-list/car-list.component';
 import { CarsModule } from './cars/cars.module';
+import { MatDialogModule} from '@angular/material/dialog';
 import { DeleteCarComponent } from './cars/delete-car/delete-car.component';
 
 
@@ -18,6 +19,7 @@ import { DeleteCarComponent } from './cars/delete-car/delete-car.component';
   declarations: [
     AppComponent
   ],
+  entryComponents: [DeleteCarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,10 +28,11 @@ import { DeleteCarComponent } from './cars/delete-car/delete-car.component';
     MatSidenavModule,
     MatListModule,
     LayoutModule,
-    CarsModule
+    CarsModule,
+    MatDialogModule,
   ],
   providers: [
-    ViewAllComponent,
+    CarListComponent,
     DeleteCarComponent,
   ],
   bootstrap: [AppComponent]

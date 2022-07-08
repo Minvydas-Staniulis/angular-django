@@ -14,17 +14,17 @@ export class CarService {
   allCars(): Observable<Car[]>{
     return this.http.get<Car[]>(this.baseUrl);
   }
-// CREATE TYPES
+
   addCar(carObj: Car){
     return this.http.post(this.baseUrl, carObj); 
   }
 
   deleteCar(id: string){
-    return this.http.delete(this.baseUrl + "/" + id);
+    return this.http.delete(`${this.baseUrl}/${id}`);
   }
 
   viewCar(id: string) {
-    return this.http.get(this.baseUrl + "/" + id);
+    return this.http.get(`${this.baseUrl}/${id}`);
   }
 
   updateCar(carObj: Car) {
