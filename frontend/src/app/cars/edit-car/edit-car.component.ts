@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarService } from 'src/app/services/car.service';
@@ -44,7 +44,7 @@ export class EditCarComponent implements OnInit {
       this._snackBar.open("Record Created Successfuly");
       this.router.navigate(['cars/all']);
     }, () => 
-      this._snackBar.open("Failed, car plate already exists or is in invalid format")
+      this._snackBar.open("Failed, check fields and try again")
     );
     }
   }

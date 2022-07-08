@@ -27,7 +27,7 @@ export class AddCarComponent implements OnInit {
       this._snackBar.open("Record Created Successfuly");
       this.router.navigate(['cars/all']);
     }, err => {
-      this._snackBar.open("Failed, car plate already exists or is in invalid format");
+      this._snackBar.open("Failed, check fields and try again");
     });
   }
 }

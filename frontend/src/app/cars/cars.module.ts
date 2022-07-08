@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ViewAllComponent } from './view-all/view-all.component';
+import { CarListComponent } from './car-list/car-list.component';
 import { AddCarComponent } from './add-car/add-car.component';
 import { EditCarComponent } from './edit-car/edit-car.component';
 import { DeleteCarComponent } from './delete-car/delete-car.component';
@@ -16,14 +16,13 @@ import {MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS} from '@angular/materia
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
-//import { MatTableDataSource } from '@angular/material/table';
 
 
 
 
 @NgModule({
   declarations: [
-    ViewAllComponent,
+    CarListComponent,
     AddCarComponent,
     EditCarComponent,
     DeleteCarComponent,
@@ -42,7 +41,6 @@ import {MatTableModule} from '@angular/material/table';
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
-    //MatTableDataSource,
 
   ],
   providers: [
